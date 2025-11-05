@@ -1,0 +1,21 @@
+/** Skip the build if the documentation file is changed
+**/
+
+pipeline{
+    agent any 
+    triggers{
+        pollSCM('H/10 * * * *')// Every 10 minutes
+    }
+    stages{
+        stage('Skip build when doc is changed'){
+            when{
+                not{
+                    changeset '**/*.md' 
+                    }
+                }
+            step{
+                echo 'no change detected, proceeding with build'
+            }
+        }
+    }
+}

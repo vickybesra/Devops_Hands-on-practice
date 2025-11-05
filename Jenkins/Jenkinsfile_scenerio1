@@ -1,4 +1,5 @@
-/**Jenkinsfile for creating triggers for PollSCM, WebHook, Cron
+/**Jenkinsfile for creating triggers for PollSCM, Cron, (webhooks do not require the trigger block)
+senerio1: Can PollSCM and Cron can be written in one trigger?- Yes
 **/
 
 
