@@ -1,0 +1,19 @@
+// Trigger Jenkins pipeline when there is change in specific folder(/src)
+
+
+pipeline{
+    agent any 
+    triggers{
+        pollSCM('H/30 * * * *')// Every 10 minutes
+    }
+    stages{
+        stage('build'){
+            when{
+                changeset "**/src/**"
+                }
+            step{
+                echo 'change in /src folder detected, proceeding with build'
+            }
+        }
+    }
+}
