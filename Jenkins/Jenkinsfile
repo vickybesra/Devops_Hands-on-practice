@@ -5,8 +5,8 @@
 pipeline{
     agent any
     triggers{
-        pollCM('H/15 * * *')//pollSCM trigger
-        cron('0 2 * * *')//Cron trigger
+        pollCM('H/15 * * *')//pollSCM trigger for 15 min everyday
+        cron('0 2 * * *')//Cron trigger for 2AM everyday
     }
     stages{
         stage('stage1'){
