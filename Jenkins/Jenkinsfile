@@ -1,7 +1,12 @@
+/**Jenkinsfile for creating triggers for PollSCM, WebHook, Cron
+**/
+
+
 pipeline{
     agent any
     triggers{
-        pollSCM('H/15 * * *')
+        pollCM('H/15 * * *')//pollSCM trigger
+        cron('0 2 * * *')//Cron trigger
     }
     stages{
         stage('stage1'){
