@@ -1,0 +1,23 @@
+//Trigger pipeline when there change in /backend/.java file or /frontend/.js
+
+pipeline{
+    agent any
+    stages{
+        stage('frontend build'){
+            when{
+                changeset "backend/**/*.js"
+            }
+            steps{
+                echo "running frontend build"
+            }
+        }
+        stage('backend build'){
+            when{
+                changeset "frontend/**/*.java"
+            }
+            steps{
+                echo "running backend build"
+            }
+        }
+    }
+}
