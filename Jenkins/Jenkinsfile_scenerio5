@@ -1,0 +1,15 @@
+//Run Jenkins pipeline every one hour but skip the build when there is lunch break(12pm to 2pm)
+
+pipeline{
+    agent any
+    triggers{
+        cron('0 0-12,14-23 * * *')
+    }
+    stages{
+        stage('skip during lunch break'){
+            steps{
+                echo 'Running Hourly build(skipping the lunch break)'
+            }
+        }
+    }
+}
