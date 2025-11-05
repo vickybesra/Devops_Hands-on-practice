@@ -1,0 +1,18 @@
+//Trigger when push to main branch
+
+pipeline{
+    agent any
+    triggers{
+        pollCM('0 2 * * * *')
+    }
+    stages{
+        stage('build when changes in main'){
+            when{
+                branch 'main'
+            }
+            steps{
+                echo 'changes detected in main, running build'
+            }
+        }
+    }
+}
