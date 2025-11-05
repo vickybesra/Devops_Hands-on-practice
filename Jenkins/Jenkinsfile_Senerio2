@@ -10,7 +10,7 @@ pipeline{
         stage('Skip build when doc is changed'){
             when{
                 not{
-                    changeset '**/*.md' 
+                    changeset '**/*.md' // ** indicates the folder and * indicates a file
                     }
                 }
             step{

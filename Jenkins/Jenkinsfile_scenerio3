@@ -1,0 +1,19 @@
+//You want to detect changes in API folder(/API) and trigger a specific api test
+//change
+
+pipeline{
+    agent any
+    triggers{
+        pollSCM('H/30 * * * *')// changes detect in every 30 minutes
+    }
+    stages{
+        stage('detect changes in API folder'){
+            when{
+                changeset "API/**" //** indicates the folder
+            }
+        }
+        steps{
+            echo 'API changes detected, run API tests'
+        }
+    }
+}
